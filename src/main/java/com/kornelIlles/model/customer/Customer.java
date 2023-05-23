@@ -29,4 +29,14 @@ public class Customer {
     public String getClientAddress() {
         return clientAddress;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "webShopId='" + webShopId + '\'' +
+                ", clientId='" + clientId + '\'' +
+                ", clientName='" + clientName + '\'' +
+                ", clientAddress='" + clientAddress + '\'' +
+                '}';
+    }
 }
