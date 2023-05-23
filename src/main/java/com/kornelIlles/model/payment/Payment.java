@@ -35,4 +35,14 @@ public abstract class Payment {
     public Date getPaymentDate() {
         return paymentDate;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "webShopId='" + webShopId + '\'' +
+                ", clientId='" + clientId + '\'' +
+                ", amount=" + amount +
+                ", paymentDate=" + paymentDate +
+                '}';
+    }
 }
