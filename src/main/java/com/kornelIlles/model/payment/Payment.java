@@ -38,11 +38,9 @@ public abstract class Payment {
 
     @Override
     public String toString() {
-        return "Payment{" +
-                "webShopId='" + webShopId + '\'' +
+        return "webShopId='" + webShopId + '\'' +
                 ", clientId='" + clientId + '\'' +
                 ", amount=" + amount +
-                ", paymentDate=" + paymentDate +
-                '}';
+                ", paymentDate=" + paymentDate;
     }
 }

@@ -27,6 +27,7 @@ public class TransferPayment extends Payment {
     @Override
     public String toString() {
         return "TransferPayment{" +
+                super.toString() +
                 "paymentType='" + paymentType + '\'' +
                 ", accountNumber='" + accountNumber + '\'' +
                 '}';
