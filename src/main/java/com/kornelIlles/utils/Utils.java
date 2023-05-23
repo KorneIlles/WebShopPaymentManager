@@ -16,6 +16,7 @@ public class Utils {
         String dateFormat = "yyyy.MM.dd";
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
         try {
+            sdf.setLenient(false);
             return sdf.parse(dateString);
         } catch (ParseException e) {
             e.printStackTrace();

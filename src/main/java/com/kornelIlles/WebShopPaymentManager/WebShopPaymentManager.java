@@ -23,12 +23,10 @@ public class WebShopPaymentManager {
         Map<String, Customer> customers = csvReader.readCustomerCSV();
         List<Payment> payments = csvReader.readPaymentCSV();
         fillTheCustomerPayments(customers, payments);
-        System.out.println(customerPayments);
-
     }
 
-    public static WebShopPaymentManager getInstance(){
-        if (webShopPaymentManager == null){
+    public static WebShopPaymentManager getInstance() {
+        if (webShopPaymentManager == null) {
             webShopPaymentManager = new WebShopPaymentManager();
         }
         return webShopPaymentManager;

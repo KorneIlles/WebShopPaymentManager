@@ -5,6 +5,8 @@ import com.kornelIlles.model.payment.CardPayment;
 import com.kornelIlles.model.payment.Payment;
 import com.kornelIlles.model.payment.TransferPayment;
 import com.kornelIlles.utils.Utils;
+import com.kornelIlles.utils.validator.LineValidator;
+import com.kornelIlles.utils.validator.MyLineValidator;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -53,9 +55,13 @@ public class CsvReader {
 
         try (CSVReader reader = new CSVReader(new FileReader(paymentPath))) {
             String[] nextLine;
+            LineValidator myLineValidator = new MyLineValidator();
             while ((nextLine = reader.readNext()) != null) {
-                Payment payment = convertToPayment(nextLine[0].split(";"));
-                payments.add(payment);
+                String[] lineFields = nextLine[0].split(";");
+                if (myLineValidator.isValid(lineFields)){
+                    Payment payment = convertToPayment(lineFields);
+                    payments.add(payment);
+                }
             }
         } catch (CsvValidationException | IOException e) {
             e.printStackTrace();
@@ -66,8 +72,6 @@ public class CsvReader {
     }
 
     private Payment convertToPayment(String[] PaymentData) {
-
-        //TODO: define some check
 
         String webShopId = PaymentData[0];
         String clientId = PaymentData[1];
