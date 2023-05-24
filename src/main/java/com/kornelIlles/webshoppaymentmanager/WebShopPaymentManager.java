@@ -1,4 +1,4 @@
-package com.kornelIlles.WebShopPaymentManager;
+package com.kornelIlles.webshoppaymentmanager;
 
 import com.kornelIlles.dto.CustomerPaymentReportDTO;
 import com.kornelIlles.report.CsvReader;
@@ -7,7 +7,6 @@ import com.kornelIlles.model.payment.Payment;
 import com.kornelIlles.report.CsvWriter;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class WebShopPaymentManager {
 

@@ -1,6 +1,6 @@
 package com.kornelIlles;
 
-import com.kornelIlles.WebShopPaymentManager.WebShopPaymentManager;
+import com.kornelIlles.webshoppaymentmanager.WebShopPaymentManager;
 
 public class Main {
     public static void main(String[] args) {
