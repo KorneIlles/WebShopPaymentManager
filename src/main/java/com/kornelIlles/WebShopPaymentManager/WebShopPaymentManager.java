@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class WebShopPaymentManager {
 
     private static WebShopPaymentManager webShopPaymentManager;
-
     private final HashMap<Customer, List<Payment>> customerPayments;
     private final CsvReader csvReader;
     private final CsvWriter csvWriter;

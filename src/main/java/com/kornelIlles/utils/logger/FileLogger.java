@@ -30,7 +30,7 @@ public class FileLogger {
         logger.setLevel(Level.WARNING);
     }
 
-    public static void logWrongLine(String[] line, String errorMessage){
+    public static void logWrongLine(String[] line, String errorMessage) {
         logger.warning(errorMessage + " -> " + Arrays.toString(line));
     }
 }

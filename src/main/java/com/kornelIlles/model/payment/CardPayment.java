@@ -23,12 +23,4 @@ public class CardPayment extends Payment {
         return cardNumber;
     }
 
-    @Override
-    public String toString() {
-        return "CardPayment{" +
-                super.toString() +
-                "paymentType='" + paymentType + '\'' +
-                ", cardNumber='" + cardNumber + '\'' +
-                '}';
-    }
 }

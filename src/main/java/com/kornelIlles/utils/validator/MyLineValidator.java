@@ -18,12 +18,12 @@ public class MyLineValidator implements LineValidator {
         String bankAccount = line[4];
         String cardNumber = line[5];
         if (paymentType.equalsIgnoreCase("card")) {
-            if(bankAccount.isEmpty() && cardNumber.length() == 16){
+            if (bankAccount.isEmpty() && cardNumber.length() == 16) {
                 return true;
             }
             FileLogger.logWrongLine(line, "incorrect card data");
         } else if (paymentType.equalsIgnoreCase("transfer")) {
-            if (cardNumber.isEmpty() && bankAccount.length() == 16){
+            if (cardNumber.isEmpty() && bankAccount.length() == 16) {
                 return true;
             }
             FileLogger.logWrongLine(line, "incorrect account number");
@@ -31,7 +31,7 @@ public class MyLineValidator implements LineValidator {
         return false;
     }
 
-    private boolean isValidDate(String[] line){
+    private boolean isValidDate(String[] line) {
         String dateString = line[6];
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
         dateFormat.setLenient(false);

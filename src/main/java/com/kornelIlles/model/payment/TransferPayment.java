@@ -22,14 +22,4 @@ public class TransferPayment extends Payment {
     public String getAccountNumber() {
         return accountNumber;
     }
-
-
-    @Override
-    public String toString() {
-        return "TransferPayment{" +
-                super.toString() +
-                "paymentType='" + paymentType + '\'' +
-                ", accountNumber='" + accountNumber + '\'' +
-                '}';
-    }
 }
