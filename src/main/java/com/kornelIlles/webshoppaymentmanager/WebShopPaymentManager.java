@@ -20,6 +20,17 @@ public class WebShopPaymentManager {
         this.csvReader = CsvReader.getInstance();
         this.csvWriter = CsvWriter.getInstance();
         customerPayments = new HashMap<>();
+        run();
+    }
+
+    private WebShopPaymentManager(String[] args) {
+        this.csvReader = CsvReader.getInstance(args);
+        this.csvWriter = CsvWriter.getInstance();
+        customerPayments = new HashMap<>();
+        run();
+    }
+
+    private void run() {
         Map<String, Customer> customers = csvReader.readCustomerCSV();
         List<Payment> payments = csvReader.readPaymentCSV();
         fillTheCustomerPayments(customers, payments);
@@ -27,11 +38,19 @@ public class WebShopPaymentManager {
         List<CustomerPaymentReportDTO> topCustomer = getTopCustomers(csvReader.readCustomerPaymentSum());
         csvWriter.writeTopCustomer(topCustomer);
         csvWriter.writeWebShopTotalRevenue(payments);
+        System.out.println("Finished!");
     }
 
     public static WebShopPaymentManager getInstance() {
         if (webShopPaymentManager == null) {
             webShopPaymentManager = new WebShopPaymentManager();
+        }
+        return webShopPaymentManager;
+    }
+
+    public static WebShopPaymentManager getInstance(String[] args) {
+        if (webShopPaymentManager == null) {
+            webShopPaymentManager = new WebShopPaymentManager(args);
         }
         return webShopPaymentManager;
     }

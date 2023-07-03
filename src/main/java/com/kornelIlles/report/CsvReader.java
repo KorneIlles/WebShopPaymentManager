@@ -13,6 +13,7 @@ import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -29,6 +30,12 @@ public class CsvReader {
         this.customerPaymentSum = Utils.getCsvPath("csv.customerPaymentSum");
     }
 
+    private CsvReader(String[] args) {
+        this.customerPath = args[0];
+        this.paymentPath = args[1];
+        this.customerPaymentSum = Utils.getCsvPath("csv.customerPaymentSum");
+    }
+
     public static CsvReader getInstance() {
         if (csvReader == null) {
             csvReader = new CsvReader();
@@ -36,10 +43,17 @@ public class CsvReader {
         return csvReader;
     }
 
+    public static CsvReader getInstance(String[] args) {
+        if (csvReader == null) {
+            csvReader = new CsvReader(args);
+        }
+        return csvReader;
+    }
+
     public Map<String, Customer> readCustomerCSV() {
         Map<String, Customer> customers = new HashMap<>();
 
-        try (CSVReader reader = new CSVReader(new FileReader(customerPath))) {
+        try (CSVReader reader = new CSVReader(new InputStreamReader(Utils.getCsvInputStream(customerPath)))) {
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 Customer customer = convertToCustomer(nextLine[0].split(";"));
@@ -50,13 +64,14 @@ public class CsvReader {
             e.printStackTrace();
         }
 
+
         return customers;
     }
 
     public List<Payment> readPaymentCSV() {
         List<Payment> payments = new ArrayList<>();
 
-        try (CSVReader reader = new CSVReader(new FileReader(paymentPath))) {
+        try (CSVReader reader = new CSVReader(new InputStreamReader(Utils.getCsvInputStream(paymentPath)))) {
             String[] nextLine;
             LineValidator myLineValidator = new MyLineValidator();
             while ((nextLine = reader.readNext()) != null) {
@@ -74,7 +89,7 @@ public class CsvReader {
 
     public List<CustomerPaymentReportDTO> readCustomerPaymentSum() {
         List<CustomerPaymentReportDTO> customersPayment = new ArrayList<>();
-        try (CSVReader reader = new CSVReader(new FileReader(customerPaymentSum))) {
+        try (CSVReader reader = new CSVReader(new InputStreamReader(Utils.getCsvInputStream(customerPaymentSum)))) {
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 CustomerPaymentReportDTO customerPaymentReportDTO = convertToCustomerPaymentReportDTO(nextLine[0].split(";"));

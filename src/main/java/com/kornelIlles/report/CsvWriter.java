@@ -6,6 +6,7 @@ import com.kornelIlles.model.payment.CardPayment;
 import com.kornelIlles.model.payment.Payment;
 import com.kornelIlles.model.payment.TransferPayment;
 import com.kornelIlles.utils.Utils;
+import jdk.jshell.execution.Util;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -37,25 +38,25 @@ public class CsvWriter {
     }
 
     public void writeClientPaymentSumReport(Map<Customer, List<Payment>> customerPayments) {
-        try (PrintWriter pw = new PrintWriter(customerPaymentSum)) {
+        try (PrintWriter pw = new PrintWriter(Utils.getCsvOutputStream(customerPaymentSum))) {
             for (Map.Entry<Customer, List<Payment>> entry : customerPayments.entrySet()) {
                 Customer customer = entry.getKey();
                 List<Payment> payments = entry.getValue();
                 String line = String.format("%s;%s;%.2f", customer.getClientName(), customer.getClientAddress(), sumPayment(payments));
                 pw.println(line);
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void writeTopCustomer(List<CustomerPaymentReportDTO> topCustomers) {
-        try (PrintWriter pw = new PrintWriter(topCustomerPayment)) {
+        try (PrintWriter pw = new PrintWriter(Utils.getCsvOutputStream(topCustomerPayment))) {
             for (CustomerPaymentReportDTO topCustomer : topCustomers) {
                 String line = String.format("%s;%s;%.2f", topCustomer.getCustomerName(), topCustomer.getCustomerAddress(), topCustomer.getSumOfPayment());
                 pw.println(line);
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -63,7 +64,7 @@ public class CsvWriter {
     public void writeWebShopTotalRevenue(List<Payment> payments) {
         Map<String, BigDecimal[]> webShopTotals = getWebShopIdsAndRevenues(payments);
 
-        try (PrintWriter pw = new PrintWriter(webShopTotalRevenue)) {
+        try (PrintWriter pw = new PrintWriter(Utils.getCsvOutputStream(webShopTotalRevenue))) {
             for (Map.Entry<String, BigDecimal[]> entry : webShopTotals.entrySet()) {
                 String webShopId = entry.getKey();
                 BigDecimal[] totals = entry.getValue();
@@ -73,7 +74,7 @@ public class CsvWriter {
                 String line = String.format("%s;%.2f;%.2f", webShopId, cardPurchaseTotal, transactionTotal);
                 pw.println(line);
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -1,8 +1,8 @@
-Jun 29, 2023 4:50:30 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
+Jul 03, 2023 2:42:33 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
 WARNING: incorrect card data -> [WS02, A01, card, 12000, , 377947047949679, 2021.01.13]
-Jun 29, 2023 4:50:30 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
+Jul 03, 2023 2:42:33 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
 WARNING: incorrect card data -> [WS02, A03, card, 2900, 6757619297057019, , 2021.01.21]
-Jun 29, 2023 4:50:30 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
+Jul 03, 2023 2:42:33 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
 WARNING: incorrect card data -> [WS01, A02, card, 20234, , 377947047949679, 2021.01.11]
-Jun 29, 2023 4:50:30 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
+Jul 03, 2023 2:42:33 PM com.kornelIlles.utils.logger.FileLogger logWrongLine
 WARNING: incorrect date -> [WS01, A03, card, 198, , 5437588499034201, 2021.01.182]
